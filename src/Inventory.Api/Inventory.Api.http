@@ -1,0 +1,5 @@
+@host = http://localhost:5242
+
+### Inventory aggregated by category
+GET {{host}}/api/inventory/categories
+Accept: application/json
