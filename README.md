@@ -246,7 +246,11 @@ as one on the first. Checks 3 to 6 are about the dataset as a whole and are not 
 
 - Against the live API: the service's output matches figures computed separately with a short
   Python script over the raw pages (table in the observations document).
-- Each safeguard was removed in turn to confirm that at least one test fails without it.
+- Thirty safeguards (each check, retry rule and timeout) were removed one at a time to see
+  whether a test fails without it. For 28 one did. The other two removals changed no behaviour,
+  because the code is redundant there: the explicit `ThenBy(id)` tie-break (the list is already
+  in id order and the sort is stable), and the "only cache successes" condition (a failure has
+  no dataset to cache). I kept both because they state the intent.
 
 ## Decisions
 
