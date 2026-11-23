@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Deliberately has no package or project references: the business logic cannot know HTTP exists. -->
+
+</Project>
