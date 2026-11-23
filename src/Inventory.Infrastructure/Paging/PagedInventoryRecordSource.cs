@@ -109,9 +109,16 @@ internal sealed class PagedInventoryRecordSource(
                 var verified = PageValidator.Validate(response.Value, pageNumber, pageSize, expectedTotals, out var problems);
                 if (verified is not null)
                 {
-                    logger.LogInformation(
-                        "Inventory API page {Page} of {TotalPages}: {RecordCount} valid records",
-                        pageNumber, verified.Totals.TotalPages, verified.Records.Count);
+                    if (pageNumber > verified.Totals.TotalPages)
+                    {
+                        logger.LogInformation("Inventory API page {Page}, one past the last, is empty as it should be", pageNumber);
+                    }
+                    else
+                    {
+                        logger.LogInformation(
+                            "Inventory API page {Page} of {TotalPages}: {RecordCount} valid records",
+                            pageNumber, verified.Totals.TotalPages, verified.Records.Count);
+                    }
                     return verified;
                 }
 

@@ -9,7 +9,7 @@ namespace Inventory.Infrastructure;
 internal sealed class InventoryApiOptionsValidator : IValidateOptions<InventoryApiOptions>
 {
     private const string HowToConfigure =
-        "Set it with 'dotnet user-secrets' or an environment variable (see README, \"Configuration\").";
+        "Set it with 'dotnet user-secrets' or an environment variable (see README, \"Setup and run\").";
 
     public ValidateOptionsResult Validate(string? name, InventoryApiOptions options)
     {
